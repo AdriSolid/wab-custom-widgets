@@ -50,14 +50,14 @@ return declare([BaseWidget], {
 
       initLayerChooser: function(){
         const args = {
-        multiple: false,
-        createMapResponse: this.map.webMapResponse
+          multiple: false,
+          createMapResponse: this.map.webMapResponse
         }
 
         var templayerChooserFromMap = new LayerChooserFromMap(args)
 
         var layerChooserFromMap = new LayerChooserFromMapWithDropbox({
-        layerChooser: templayerChooserFromMap
+          layerChooser: templayerChooserFromMap
         })
 
         layerChooserFromMap.placeAt('layerChooserNode')
@@ -108,23 +108,23 @@ return declare([BaseWidget], {
         var fields = layer[0].fields
 
         var map = fields.map((record) => {
-        return dojo.create("option", {
-          label: record.name,
-          value: record.name,
-          selected: false
-        })
+          return dojo.create("option", {
+            label: record.name,
+            value: record.name,
+            selected: false
+          })
         })
 
         const selectX = dijit.byId('selectFieldX')
         const selectY = dijit.byId('selectFieldY')
 
         if(selectX.getOptions()){
-        selectX.removeOption(selectX.getOptions())
-        selectY.removeOption(selectY.getOptions())
-        selectX.addOption({label: "", value: "", selected: true})
-        selectY.addOption({label: "", value: "", selected: true})
-        selectX.addOption(map)
-        selectY.addOption(map)
+          selectX.removeOption(selectX.getOptions())
+          selectY.removeOption(selectY.getOptions())
+          selectX.addOption({label: "", value: "", selected: true})
+          selectY.addOption({label: "", value: "", selected: true})
+          selectX.addOption(map)
+          selectY.addOption(map)
         }
       },
 
@@ -132,9 +132,9 @@ return declare([BaseWidget], {
         const self = this
         let myButton = new Button({
         label: "Execute",
-        onClick: () => {
-            self.displayChart()
-        }
+          onClick: () => {
+              self.displayChart()
+          }
         }, "executeChart").startup()
       },
 
@@ -158,26 +158,26 @@ return declare([BaseWidget], {
 
       displayChart: function(){
         this.chart = new Cedar({
-        "type": this.typeChart,
-        "dataset":{
-          "url": this.url,
-          "mappings":{
-            "x": { "field": this.fieldX, "label": this.fieldX },
-            "y": { "field": this.fieldY, "label": this.fieldY }
-          },
-        }
+          "type": this.typeChart,
+          "dataset":{
+            "url": this.url,
+            "mappings":{
+              "x": { "field": this.fieldX, "label": this.fieldX },
+              "y": { "field": this.fieldY, "label": this.fieldY }
+            },
+          }
         });
 
         this.chart.tooltip = {
-        "title": "{" + this.fieldX + "}",
-        "content": "{" + this.fieldY + "}"
+          "title": "{" + this.fieldX + "}",
+          "content": "{" + this.fieldY + "}"
         }
 
         this.chart.show({
-        elementId: "#chart",
-        autolabels: true,
-        width: this.initialWidgetWidth * 0.9, 
-        height: 275
+          elementId: "#chart",
+          autolabels: true,
+          width: this.initialWidgetWidth * 0.9, 
+          height: 275
         });
       },
 
