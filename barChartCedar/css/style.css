@@ -1,0 +1,14 @@
+#srcNodeRef{
+  top: 0px;
+  position: absolute;
+}
+
+tr.spaceUnder > td {
+ padding-bottom: 1em;
+}
+
+tr.spaceChart > td {
+ padding-bottom: 3em;
+}
+
+

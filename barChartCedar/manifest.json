@@ -1,0 +1,14 @@
+{
+  "name": "barChartCedar",
+  "type": "widget",
+  "platform": "HTML",
+  "version": "2.6",
+  "wabVersion": "2.6",
+  "author": "Adrián Pérez Beneito",
+  "description": "Bar chart widget using Cedar",
+  "copyright": "2017",
+  "license": "http://www.apache.org/licenses/LICENSE-2.0",
+  "properties": {
+    "supportMultiInstance": false
+  }
+}
