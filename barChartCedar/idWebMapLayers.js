@@ -30,10 +30,33 @@ define([
       }
 
       var recording = layers.map(function(record){
+        switch(true){
+          case record.geometryType === "esriGeometryPolygon":
+            return dojo.create("option", {
+              label: '<img src="https://adrisolid.github.io/CedarWidget/jimu.js/css/images/polygon_layer1.png" height="12.5" width="12.5"> ' + record.name,
+              value: record.id
+            })
+          case record.geometryType === "esriGeometryPoint":
+            return dojo.create("option", {
+              label: '<img src="https://adrisolid.github.io/CedarWidget/jimu.js/css/images/point_layer1.png" height="12.5" width="12.5"> ' + record.name,
+              value: record.id
+            })
+          case record.geometryType === "esriGeometryLine" || record.geometryType === "esriGeometryPolyLine":
+            return dojo.create("option", {
+              label: '<img src="https://adrisolid.github.io/CedarWidget/jimu.js/css/images/line_layer1.png" height="12.5" width="12.5"> ' + record.name,
+              value: record.id
+            })
+          case record.geometryType === "esriGeometryMultiPatch":
+            return dojo.create("option", {
+              label: '<span><strong> M</strong></span> ' + record.name,
+              value: record.id
+            })
+          default:
             return dojo.create("option", {
               label: record.name,
               value: record.id
-            })
+          })
+        }
       })
 
       const selectLayer = dijit.byId(id)
