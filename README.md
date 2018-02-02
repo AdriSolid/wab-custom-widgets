@@ -19,12 +19,12 @@ Don't forget to add the [Cedar dependencies](https://github.com/esri/cedar#loadi
 ***
 
 ## IntroJS ft WAB :dizzy: [live demo](https://adrisolid.github.io/IntroJS/)
-# Why using [intro.js](https://introjs.com/)?
+### Why using [intro.js](https://introjs.com/)?
 When new users visit your website or product you should demonstrate your product features using a step-by-step guide. Even when you develop and add a new feature to your product, you should be able to represent them to your users using a user-friendly solution. Intro.js is developed to enable web and mobile developers to create a step-by-step introduction easily.
 
 ![.](http://adri2c.maps.arcgis.com/sharing/rest/content/items/486a97c81a394212b4a059c80667f275/data)
 
-# Integration with a Web App Builder app
+### Integration with a Web App Builder app
 
 **Add [intro.js dependencies](https://github.com/usablica/intro.js/#introjs-v290)**
 
