@@ -1,6 +1,8 @@
 # Web App Builder Custom Widgets
 
 Adrián Pérez Beneito Web App builder Custom Widget List
+- [Bar Chart Cedar](https://github.com/AdriSolid/WAB-Custom-Widgets/blob/master/README.md#bar-chart-cedar-bar_chart-live-demo)
+- [Intro.js](https://github.com/AdriSolid/WAB-Custom-Widgets/blob/master/README.md#introjs-ft-wab-dizzy-live-demo)
 
 
 ## Bar Chart Cedar :bar_chart: [live demo](https://adrisolid.github.io/CedarWidget/)
@@ -26,7 +28,7 @@ When new users visit your website or product you should demonstrate your product
 
 ### Integration with a Web App Builder app
 
-**Add [intro.js dependencies](https://github.com/usablica/intro.js/#introjs-v290)**
+**Add [intro.js dependencies](https://github.com/usablica/intro.js/#introjs-v290)** [How to add other libraries to WAB?](https://developers.arcgis.com/web-appbuilder/sample-code/add-a-third-party-library.htm)
 
 **Create the configuration js file and refer to it in the application in the file 'index.html'**
 Explore and get with the console the id/classes names of the containers to which you want to add as a step. Fill the 'intro' and 'position' options:
