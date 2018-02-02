@@ -8,7 +8,7 @@ See [Cedar.js](https://esri.github.io/cedar/tutorial/) and how to create charts 
 
 ![.](http://adri2c.maps.arcgis.com/sharing/rest/content/items/25a901a69bc3449a9658ddd1386bb444/data)
 
-Don't forget to add the Cedar dependencies. [How to add other libraries to WAB?](https://developers.arcgis.com/web-appbuilder/sample-code/add-a-third-party-library.htm)
+Don't forget to add the [Cedar dependencies](https://github.com/esri/cedar#loading-cedar). [How to add other libraries to WAB?](https://developers.arcgis.com/web-appbuilder/sample-code/add-a-third-party-library.htm)
 
 **Version 1.2**, pending improvements. All suggestions for improvement will be welcome.
 
