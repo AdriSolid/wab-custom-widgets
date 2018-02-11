@@ -100,7 +100,7 @@ The [HeatmapRenderer](https://developers.arcgis.com/javascript/3/jsapi/heatmapre
 
 ### Using HeatMap Widget
 
-![.](http://adri2c.maps.arcgis.com/home/item.html?id=db76b9224508419c90c332f17ec2ce0d/data)
+![.](http://adri2c.maps.arcgis.com/sharing/rest/content/items/db76b9224508419c90c332f17ec2ce0d/data)
 
 - Select a layer (it needs point type; the widget is already prepared for filter the layers and get 'point' layers)
 - Select a field (numeric -short, float, etc-)
@@ -109,7 +109,7 @@ The [HeatmapRenderer](https://developers.arcgis.com/javascript/3/jsapi/heatmapre
 - Slider: select 'Min Value' (The pixel intensity value which is assigned the initial color in the color ramp. Values below this number           will also be assigned the initial color ramp color)
 - [Heat Map Slider](https://developers.arcgis.com/javascript/3/jsapi/heatmapslider-amd.html): (A widget to assist in obtaining values for managing and setting properties on a HeatmapRenderer)
 
-![.](http://adri2c.maps.arcgis.com/home/item.html?id=893dd8fab23140249db42c6d8ffd4ec6/data)
+![.](http://adri2c.maps.arcgis.com/sharing/rest/content/items/893dd8fab23140249db42c6d8ffd4ec6/data)
 
 
 
