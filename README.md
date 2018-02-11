@@ -3,6 +3,7 @@
 Adrián Pérez Beneito Web App builder Custom Widget List
 - [Bar Chart Cedar](https://github.com/AdriSolid/WAB-Custom-Widgets/blob/master/README.md#bar-chart-cedar-bar_chart-live-demo)
 - [Intro.js](https://github.com/AdriSolid/WAB-Custom-Widgets/blob/master/README.md#introjs-ft-wab-dizzy-live-demo)
+- [Heat Map]()
 
 
 ## Bar Chart Cedar :bar_chart: [live demo](https://adrisolid.github.io/CedarWidget/)
@@ -15,7 +16,8 @@ Don't forget to add the [Cedar dependencies](https://github.com/esri/cedar#loadi
 **Version 1.2**, pending improvements. All suggestions for improvement will be welcome.
 
 **List of the latest enhancements and changes:**
-- Added a new class => select the layers ids from the Web Map (Dojo Select) => geometry icon
+- Added a new class => select the layers ids from the Web Map (Dojo Select) 
+- Added geometry icon
 
 
 ***
@@ -87,6 +89,28 @@ IntroJS: function(){
 },
 
 ```
+
+
+***
+
+
+## Heat Map WAB 2.7 :fire: [live demo](https://adrisolid.github.io/heatMapWidget/)
+### Using ArcGIS API for JavaScript 3.23 for create a HeatMap in WAB 2.7
+The [HeatmapRenderer](https://developers.arcgis.com/javascript/3/jsapi/heatmaprenderer-amd.html) renders feature layer point data into a raster visualization that emphasizes areas of higher density or weighted values. This renderer uses a Gaussian Blur technique to average the influence of each point out over the area determined by the 'blurRadius' (the radius (in pixels) of the circle over which the majority of each point's value is spread out.). A Gaussian blur uses a Gaussian, or Normal, distribution (also called a Bell-curve) to spread value out in vertical and horizontal directions. 
+
+### Using HeatMap Widget
+
+![.](http://adri2c.maps.arcgis.com/home/item.html?id=db76b9224508419c90c332f17ec2ce0d)
+
+- Select a layer (it needs point type; the widget is already prepared for filter the layers and get 'point' layers)
+- Select a field (numeric -short, float, etc-)
+- Slider: select 'Blur Radius' (The radius -in pixels- of the circle over which the majority of each point's value is spread out)
+- Slider: select 'Max Value' (The pixel intensity value which is assigned the final color in the color ramp. Values above this number             will also be assigned the final color ramp color)
+- Slider: select 'Min Value' (The pixel intensity value which is assigned the initial color in the color ramp. Values below this number           will also be assigned the initial color ramp color)
+- [Heat Map Slider](https://developers.arcgis.com/javascript/3/jsapi/heatmapslider-amd.html): (A widget to assist in obtaining values for managing and setting properties on a HeatmapRenderer)
+
+![.](http://adri2c.maps.arcgis.com/home/item.html?id=893dd8fab23140249db42c6d8ffd4ec6)
+
 
 
 
