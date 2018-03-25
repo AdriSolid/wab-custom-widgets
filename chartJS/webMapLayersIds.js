@@ -66,9 +66,6 @@ define([
       var selectLayer = dijit.byId(id)
           selectLayer.addOption(recording)
 
-      if(!recording){
-        alert('This widget needs a layer; fill your WebMap with some')
-      }
     },
 
   });
