@@ -1,0 +1,13 @@
+{
+  "name": "chartJS",
+  "platform": "HTML",
+  "version": "1.0",
+  "wabVersion": "2.7",
+  "author": "Adrián Pérez Beneito",
+  "description": "Display charts on the fly using ChartJS",
+  "copyright": "",
+  "license": "http://www.apache.org/licenses/LICENSE-2.0",
+  "properties": {
+    "hasConfig": false
+  }
+}

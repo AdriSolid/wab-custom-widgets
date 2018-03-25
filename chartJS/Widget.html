@@ -1,0 +1,28 @@
+<div>
+  <table>
+	  <tr class="spaceUnder">
+      <td colspan="2">
+        ${nls.selectLayer} <div id="layerChooserNode"></div>
+      </td>
+	  </tr>
+	  <tr class="spaceUnder">
+      <td>
+        ${nls.selectXField} <div id="selectXContainer"></div>
+      </td>
+      <td>
+        ${nls.selectYField} <div id="selectYContainer"></div>
+      </td>
+	  </tr>
+	  <tr class="spaceUnder">
+      <td>
+        ${nls.selectChart} <div id="typeChartContainer"></div>
+      </td>
+      <td class="spaceUnder">
+        <button id="executeChart" type="button"></button>
+      </td>
+	  </tr>
+  </table>
+  <div data-dojo-attach-point="containerNode" class="chart-container">
+    <canvas data-dojo-attach-point="canvas"></canvas>
+  </div>
+</div>

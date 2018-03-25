@@ -1,0 +1,17 @@
+tr.spaceUnder > td {
+ padding-bottom: 1em;
+ padding-right: 3em;
+}
+
+tr.spaceChart > td {
+ padding-bottom: 3em;
+}
+
+canvas {
+  border: 1px dotted lightgrey;
+}
+
+.chart-container {
+  position: relative;
+  margin: auto;
+}
