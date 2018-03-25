@@ -4,6 +4,7 @@ Adrián Pérez Beneito Web App builder Custom Widget List
 - [Bar Chart Cedar](https://github.com/AdriSolid/WAB-Custom-Widgets/blob/master/README.md#bar-chart-cedar-bar_chart-live-demo)
 - [Intro.js](https://github.com/AdriSolid/WAB-Custom-Widgets/blob/master/README.md#introjs-ft-wab-dizzy-live-demo)
 - [Heat Map](https://github.com/AdriSolid/WAB-Custom-Widgets/blob/master/README.md#heat-map-wab-27-fire-live-demo)
+- [ChartJS](https://github.com/AdriSolid/WAB-Custom-Widgets/blob/master/README.md#ChartJS-Widget-27-fire-live-demo)
 
 
 ## Bar Chart Cedar :bar_chart: [live demo](https://adrisolid.github.io/CedarWidget/)
@@ -110,6 +111,30 @@ The [HeatmapRenderer](https://developers.arcgis.com/javascript/3/jsapi/heatmapre
 - [Heat Map Slider](https://developers.arcgis.com/javascript/3/jsapi/heatmapslider-amd.html): (A widget to assist in obtaining values for managing and setting properties on a HeatmapRenderer)
 
 ![.](http://adri2c.maps.arcgis.com/sharing/rest/content/items/893dd8fab23140249db42c6d8ffd4ec6/data)
+
+
+***
+
+
+## ChartJS Widget :chart_with_upwards_trend: [live demo](https://adrisolid.github.io/ChartJSWidget/)
+### Using [ChartJS](http://www.chartjs.org/) for create charts using your GeoServices
+Chart.js is a community maintained [open-source library](https://github.com/chartjs/Chart.js) that helps you easily visualize data using JavaScript. ChartJS is simple and clean HTML5 based JavaScript charts. Display line and bar charts using your GeoServices.
+
+### Integration with a Web App Builder app
+
+**Add [ChartJS dependencies](http://www.chartjs.org/docs/latest/getting-started/installation.html)** [How to add other libraries to WAB?](https://developers.arcgis.com/web-appbuilder/sample-code/add-a-third-party-library.htm)
+
+### Using Chart Widget
+
+![.](http://adri2c.maps.arcgis.com/sharing/rest/content/items/2bb5dd73fdf24907839b6e8da6f29077/data)
+
+- Select a layer 
+- Select a field for 'x' axis
+- Select a field for 'y' axis
+- Select a chart type
+- Click 'Execute' button
+
+
 
 
 
