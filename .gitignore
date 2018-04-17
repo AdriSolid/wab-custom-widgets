@@ -1,0 +1,12 @@
+.idea
+.DS_Store
+Thumbs.db
+*.log
+*.pid
+*.seed
+*.orig
+
+libs/vendors.js
+widgets/React*/Widget.js
+*.map
+node_modules
