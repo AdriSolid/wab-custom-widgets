@@ -1,6 +1,7 @@
 define(['dojo/_base/declare', 
         'jimu/BaseWidget',
         'dojo/on',
+        'dojo/_base/lang',
         'dijit/form/Select',
         'dijit/form/Button',
         'dijit/form/CheckBox',
@@ -14,7 +15,7 @@ define(['dojo/_base/declare',
         'dojo/dom-construct',
         'dojo/dom',
         'dojo/domReady!'],
-function(declare, BaseWidget, on, Select, Button, CheckBox, idWebMapLayers,
+function(declare, BaseWidget, on, lang, Select, Button, CheckBox, idWebMapLayers,
          FeatureLayer, HeatmapRenderer, HorizontalSlider, HeatmapSlider,
          ConfirmDialog, domStyle, domConstruct, dom) {
   
@@ -32,10 +33,9 @@ function(declare, BaseWidget, on, Select, Button, CheckBox, idWebMapLayers,
     slider: null,
     myStops: null,
 
-    postCreate: function(){
+    /*postCreate: function(){
       this.inherited(arguments) 
-      window.self = this
-    },
+    },*/
 
     startup: function() {
       this.inherited(arguments) 
@@ -46,6 +46,7 @@ function(declare, BaseWidget, on, Select, Button, CheckBox, idWebMapLayers,
       this.initHeatMapSlider() 
       this.slider = dom.byId('showingSlider') 
       domStyle.set(this.slider, 'display', 'none') 
+      console.log('init')
     },
 
     initLayerChooser: function(){
@@ -61,9 +62,9 @@ function(declare, BaseWidget, on, Select, Button, CheckBox, idWebMapLayers,
         this.layerName = dijit.byId(idForChangeEvent).value
         this.initSelect(this.layerName) 
      
-        dijit.byId(idForChangeEvent).on("change", function(){
-          self.options(this.get("value")) 
-        })
+        dijit.byId(idForChangeEvent).on("change", lang.hitch(this, function(evt){
+          this.options(evt) 
+        }))
       },
 
     initSelect: function(layerId){
@@ -74,9 +75,9 @@ function(declare, BaseWidget, on, Select, Button, CheckBox, idWebMapLayers,
 
         var fieldId = dijit.byId('fieldSelector') 
         this.field = fieldId.value 
-        fieldId.on("change", function(){
-          self.field = this.get("value") 
-        }) 
+        fieldId.on("change", lang.hitch(this, function(evt){
+          this.field = evt
+        }))
 
         this.options(layerId) 
     },
@@ -104,9 +105,9 @@ function(declare, BaseWidget, on, Select, Button, CheckBox, idWebMapLayers,
     initButton: function(){
         new Button({
         label: "Execute",
-        onClick: function(){
-            self.displayHeatMapLayer() 
-         }
+        onClick: lang.hitch(this, function(){
+            this.displayHeatMapLayer() 
+         })
         }, 'executeHeatMap').startup() 
     },
 
@@ -118,24 +119,23 @@ function(declare, BaseWidget, on, Select, Button, CheckBox, idWebMapLayers,
             minimum: 0,
             maximum: 30,
             style: "width:300px ",
-            onChange: function(value){
-                self.blurRadius = value 
+            onChange: lang.hitch(this, function(value){
+                this.blurRadius = value 
                 dom.byId("blurRadiusDom").innerHTML = value.toFixed(0) 
-            }
+            })
         }, 'blurRadiusNode').startup()
         dom.byId("blurRadiusDom").innerHTML = valueBlurRadius 
 
         var blurRadiusSlider = dijit.byId('blurRadius') 
         this.blurRadius = blurRadiusSlider.value 
-        blurRadiusSlider.on("change", function(){
-            var value = this.get("value") 
-            if(self.heatmapRenderer !== null){
-                if (value !== self.heatmapRenderer.blurRadius) {
-                self.heatmapRenderer.blurRadius = value 
-                self.heatmapFeatureLayer.redraw() 
+        blurRadiusSlider.on("change", lang.hitch(this, function(value){
+            if(this.heatmapRenderer !== null){
+                if (value !== this.heatmapRenderer.blurRadius) {
+                  this.heatmapRenderer.blurRadius = value 
+                  this.heatmapFeatureLayer.redraw() 
                 }
             }
-        }) 
+        }))
 
         var valueMaxValue = 100 
         new HorizontalSlider({
@@ -144,24 +144,23 @@ function(declare, BaseWidget, on, Select, Button, CheckBox, idWebMapLayers,
             minimum: 0,
             maximum: 500,
             style: "width:300px ",
-            onChange: function(value){
-                self.maxValue = value 
+            onChange: lang.hitch(this, function(value){
+                this.maxValue = value 
                 dom.byId("maxValueDom").innerHTML = value.toFixed(0) 
-            }
+            })
         }, 'maxValueNode').startup() 
         dom.byId("maxValueDom").innerHTML = valueMaxValue 
 
         var maxValueSlider = dijit.byId('maxValue') 
         this.maxValue = maxValueSlider.value 
-        maxValueSlider.on("change", function(){
-            var value = this.get("value") 
-            if(self.heatmapRenderer !== null){
-                if (value !== self.heatmapRenderer.maxPixelIntensity) {
-                self.heatmapRenderer.maxPixelIntensity = value 
-                self.heatmapFeatureLayer.redraw() 
+        maxValueSlider.on("change", lang.hitch(this, function(value){
+            if(this.heatmapRenderer !== null){
+                if (this !== this.heatmapRenderer.maxPixelIntensity) {
+                  this.heatmapRenderer.maxPixelIntensity = value 
+                  this.heatmapFeatureLayer.redraw() 
                 }
             }
-        }) 
+        })) 
 
         var valueMinValue = 1 
         new HorizontalSlider({
@@ -170,37 +169,36 @@ function(declare, BaseWidget, on, Select, Button, CheckBox, idWebMapLayers,
             minimum: 0,
             maximum: 500,
             style: "width:300px ",
-            onChange: function(value){
-                self.minValue = value 
+            onChange: lang.hitch(this, function(value){
+                this.minValue = value 
                 dom.byId("minValueDom").innerHTML = value.toFixed(0) 
-            }
+            })
         }, 'minValueNode').startup() 
         dom.byId("minValueDom").innerHTML = valueMinValue 
 
         var minValueSlider = dijit.byId('minValue') 
         this.minValue = minValueSlider.value 
-        minValueSlider.on("change", function(){
-            var value = this.get("value") 
-            if(self.heatmapRenderer !== null){
-                if (value !== self.heatmapRenderer.minPixelIntensity) {
-                self.heatmapRenderer.minPixelIntensity = value 
-                self.heatmapFeatureLayer.redraw() 
+        minValueSlider.on("change", lang.hitch(this, function(value){
+            if(this.heatmapRenderer !== null){
+                if (value !== this.heatmapRenderer.minPixelIntensity) {
+                  this.heatmapRenderer.minPixelIntensity = value 
+                  this.heatmapFeatureLayer.redraw() 
                 }
             }
-        }) 
+        }))
     },
       
     hideShowHeatMapSlider: function(){
         new CheckBox({
         name: "hideShowSlider",
         checked: false,
-        onChange: function(evt){ 
+        onChange: lang.hitch(this, function(evt){ 
             if(evt === true){
-            domStyle.set(self.slider, 'display', 'block') 
+              domStyle.set(this.slider, 'display', 'block') 
             } else{
-                domStyle.set(self.slider, 'display', 'none') 
+                domStyle.set(this.slider, 'display', 'none') 
             }
-         }
+         })
         }, "heatmapSliderHideShow").startup() 
     },
 
@@ -261,12 +259,12 @@ function(declare, BaseWidget, on, Select, Button, CheckBox, idWebMapLayers,
         }, "heatmapSliderDev") 
         heatmapSliderDev.startup() 
 
-        heatmapSliderDev.on("change", function(evt){
-          if(self.heatmapRenderer !== null){
-            self.heatmapRenderer.setColorStops(evt) 
-            self.heatmapFeatureLayer.redraw() 
+        heatmapSliderDev.on("change", lang.hitch(this, function(evt){ 
+          if(this.heatmapRenderer !== null){
+            this.heatmapRenderer.setColorStops(evt) 
+            this.heatmapFeatureLayer.redraw() 
           }
-        }) 
+        }))
     },
 
     displayHeatMapLayer: function(){
@@ -295,8 +293,8 @@ function(declare, BaseWidget, on, Select, Button, CheckBox, idWebMapLayers,
         new Button({
             label: "Remove all HeatMap layers",
             id: heatMapLayer.id + "_" + this.field + "_button",
-            onClick: function(){
-                if(self.heatmapLayers.length == 0){
+            onClick: lang.hitch(this, function(){ 
+                if(this.heatmapLayers.length == 0){
                     //Do nothing
                 } else{
                     var dialog = new ConfirmDialog({
@@ -309,16 +307,16 @@ function(declare, BaseWidget, on, Select, Button, CheckBox, idWebMapLayers,
                         })
                         dialog.set("buttonOk","Yes")
                         dialog.set("buttonCancel","No")
-                        dialog.on('execute', function(){
-                          for(i in self.heatmapLayers){
-                            self.map.removeLayer(self.heatmapLayers[i])
+                        dialog.on('execute', lang.hitch(this, function(){ 
+                          for(i in this.heatmapLayers){
+                            this.map.removeLayer(this.heatmapLayers[i])
                           }
-                        self.heatmapLayers.length = 0
-                        })
+                          this.heatmapLayers.length = 0
+                        }))
                         dialog.on('cancel', function(){/*Do nothing*/})
                         dialog.show()
                 }
-             }
+             })
             }, 'clearLayers').startup()
     }
 
