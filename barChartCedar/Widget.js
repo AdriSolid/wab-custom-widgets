@@ -1,64 +1,62 @@
 define(['dojo/_base/declare', 
         'jimu/BaseWidget',
-        "dojo/on",
-        "dojo/_base/lang",
-        "dijit/form/Select",
-        "dijit/form/Button",
-        "dijit/form/CheckBox",
-        "./idWebMapLayers",
+        'dojo/on',
+        'dojo/_base/lang',
+        'dijit/form/Select',
+        'dijit/form/Button',
+        'dijit/form/CheckBox',
+        './webMapLayersIds',
         'dijit/_WidgetsInTemplateMixin',
-        "dojo/dom",
-        "dojo/_base/connect",
-        "dojo/domReady!"
-],
-(declare, BaseWidget, on, lang, Select, Button, CheckBox, idWebMapLayers, _WidgetsInTemplateMixin, dom) => {
+        'dojo/dom',
+        'dojo/_base/connect',
+        'dojo/domReady!'],
+function(declare, BaseWidget, on, lang, Select, Button, CheckBox, idWebMapLayers, _WidgetsInTemplateMixin, dom){
 
 return declare([BaseWidget], {
 
-      baseClass: 'jimu-widget-chart-widget',
       fieldX: null,
       fieldY: null,
       url: null,
       typeChart: null,
       chart: null,
       startUpExtent: null,
-      event: null,
+      evt: null,
       initialWidgetWidth: null,
-      methodWidth: null,
+      widthMethod: null,
 
       startup: function() {
-        this.inherited(arguments);
-        this.getContainerWidth();
-        this.initLayerChooser();
-        this.initButton();
-        this.initCheckButton();
+        this.inherited(arguments)
+        this.getContainerWidth()
+        this.initLayerChooser()
+        this.initButton()
+        this.initCheckButton()
       },
 
       getContainerWidth: function(){
         if(this.getPanel().containerNode.clientWidth){
           this.initialWidgetWidth = this.getPanel().containerNode.clientWidth
-          this.methodWidth = 'this.getPanel().containerNode.clientWidth'
+          this.widthMethod = 'this.getPanel().containerNode.clientWidth'
         } else{
           this.initialWidgetWidth = this.getPanel().domNode.clientWidth
-          this.methodWidth = 'this.getPanel().domNode.clientWidth'
+          this.widthMethod = 'this.getPanel().domNode.clientWidth'
         }
       },
 
       initLayerChooser: function(){
-        const self = this;
-        const idForChangeEvent = "layerChooserNodeEvent";
+        var idForChangeEvent = "layerChooserNodeEvent"
 
         var layer = new idWebMapLayers({
           idForChangeEvent: idForChangeEvent,
           layerNode: "layerChooserNode",
-          map: this.map
+          map: this.map,
+          geometry: "*"
         });
 
-        this.initSelects(dijit.byId(idForChangeEvent).value);
+        this.initSelects(dijit.byId(idForChangeEvent).value)
      
-        dijit.byId(idForChangeEvent).on("change", function(){
-          self.options(this.get("value"));
-        })
+        dijit.byId(idForChangeEvent).on("change", lang.hitch(this, function(event){
+          this.options(event)
+        }))
       },
 
       initSelects: function(layerId){
@@ -79,25 +77,23 @@ return declare([BaseWidget], {
                       {label: "Bar-horizontal", value: "bar-horizontal"}]
           }).placeAt('typeChartContainer').startup()
 
-        const self = this
-
         var fieldXid = dijit.byId('selectFieldX');
         this.fieldX = fieldXid.value;
-        fieldXid.on("change", function(){
-            self.fieldX = this.get("value")
-        }) 
+        fieldXid.on("change", lang.hitch(this, function(event){
+            this.fieldX = event
+        }))
 
         var fieldYid = dijit.byId('selectFieldY');
         this.fieldY = fieldYid.value;
-        fieldYid.on("change", function(){
-            self.fieldY = this.get("value")
-        })
+        fieldYid.on("change", lang.hitch(this, function(event){
+            this.fieldY = event
+        }))
 
         var typeChartId = dijit.byId('_typeChart');
         this.typeChart = typeChartId.value;
-        typeChartId.on("change", function(){
-            self.typeChart = this.get("value")
-        })
+        typeChartId.on("change", lang.hitch(this, function(event){
+            this.typeChart = event
+        }))
 
         this.options(layerId);
       },
@@ -108,15 +104,15 @@ return declare([BaseWidget], {
         this.startUpExtent = layer.initialExtent
         var fields = layer.fields
 
-        var map = fields.map((record) => {
+        var map = fields.map(function(record){
           return dojo.create("option", {
             label: record.name,
             value: record.name
           })
         })
 
-        const selectX = dijit.byId('selectFieldX')
-        const selectY = dijit.byId('selectFieldY')
+        var selectX = dijit.byId('selectFieldX')
+        var selectY = dijit.byId('selectFieldY')
 
         if(selectX.getOptions()){
           selectX.removeOption(selectX.getOptions())
@@ -127,30 +123,28 @@ return declare([BaseWidget], {
       },
 
       initButton: function(){
-        const self = this
-        let myButton = new Button({
-        label: "Execute",
-        onClick: () => {
-            self.displayChart()
-         }
+        new Button({
+          label: "Execute",
+          onClick: lang.hitch(this, function(){
+              this.displayChart()
+          })
         }, "executeChart").startup()
       },
 
       initCheckButton: function(){
-        const self = this;
-        let checkBox = new CheckBox({
-        name: "checkBox",
-        checked: false,
-        onChange: (chb) => { 
-          if(chb === true){
-            this.event = this.map.on('extent-change', function() {
-              self.onExtentChanged()
-            });
-          } else{
-              this.event.remove()
-              self.onExtentChangedOff()
-          }
-        }
+        new CheckBox({
+          name: "checkBox",
+          checked: false,
+          onChange: lang.hitch(this, function(chb){ 
+            if(chb === true){
+              this.evt = this.map.on('extent-change', lang.hitch(this, function(){
+                this.onExtentChanged()
+              }))
+            } else{
+                this.evt.remove()
+                this.onExtentChangedOff()
+            }
+          })
         }, "checkButtonContainer").startup()
       },
 
@@ -180,12 +174,12 @@ return declare([BaseWidget], {
       },
 
       resize: function(){
-        this.chart.width =  eval(this.methodWidth) * 0.9
+        this.chart.width = eval(this.widthMethod) * 0.9
         this.chart.update()
       },
 
       onExtentChanged: function(){
-        let extent = this.map.geographicExtent.toJson()
+        var extent = this.map.geographicExtent.toJson()
         this.chart.dataset.query.bbox = extent.xmin + ',' + extent.xmax + ',' + extent.ymin + ',' + extent.ymax
         this.chart.update()
       },
@@ -194,6 +188,5 @@ return declare([BaseWidget], {
         this.chart.dataset.query.bbox = null
         this.chart.update()
       }
-
     })
   })
