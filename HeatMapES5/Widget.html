@@ -12,37 +12,37 @@
 	  </tr>
     <tr class="spaceUnder">
 			<td>
-				Blur Radius <span id="blurRadiusDom"></span> <div id="blurRadiusNode"></div> 
+				${nls.blurRadius} <span data-dojo-attach-point="blurRadiusSliderValue"></span> <div data-dojo-attach-point="blurRadiusSlider"></div>
 			</td>
 	  </tr>
     <tr class="spaceUnder">
 			<td>
-				Max Value <span id="maxValueDom"></span> <div id="maxValueNode"></div>
+				${nls.maxValue} <span data-dojo-attach-point="maxSliderValue"></span> <div data-dojo-attach-point="maxValueSlider"></div>
 			</td>
 	  </tr>
     <tr class="spaceUnder">
 			<td>
-				Min Value <span id="minValueDom"></span> <div id="minValueNode"></div>
+				${nls.minValue} <span data-dojo-attach-point="minSliderValue"></span> <div data-dojo-attach-point="minValueSlider"></div>
 			</td>
 	  </tr>
     <tr class="spaceUnder">
 			<td>
-				Heat Map Slider <div id="heatmapSliderHideShow"></div>
+				${nls.heatMapSlider} <div data-dojo-attach-point="heatmapSliderHideShow"></div>
 			</td>
 	  </tr>
-    <tr id="showingSlider" class="spaceUnder">
+    <tr data-dojo-attach-point="showingSlider" style="display: none" class="spaceUnder">
 			<td>
-				<div id="heatmapSliderDev"></div>
+				<div data-dojo-attach-point="heatmapSliderDev"></div>
 			</td>
 	  </tr>
     <tr class="spaceUnder">
 			<td>
-				<div id="executeHeatMap"></div>
+				<div data-dojo-type="dijit/form/Button" data-dojo-attach-point="executeHeatMap" data-dojo-props="label: '${nls.executeButtonText}'"></div>
 			</td>
 	  </tr>
 		<tr class="spaceUnder">
 			<td>
-				<div id="clearLayers"></div>
+				<div style="display: none" data-dojo-type="dijit/form/Button" data-dojo-attach-point="clearLayers" data-dojo-props="label: '${nls.clearButtonText}'"></div>
 			</td>
 	  </tr>
   </table>

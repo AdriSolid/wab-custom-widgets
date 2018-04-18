@@ -1,4 +1,4 @@
-define(['dojo/_base/declare', 
+define(['dojo/_base/declare',
         'jimu/BaseWidget',
         'dijit/_WidgetsInTemplateMixin',
         'dojo/on',
@@ -33,10 +33,10 @@ function(declare, BaseWidget, _WidgetsInTemplateMixin, on, Select, Button, Check
     heatmapFeatureLayer: null,
     heatmapRenderer: null,
     heatmapLayers: [],
-    slider: null,
     myStops: null,
 
     webMapLayers: null,
+    idPrefix: 'heatmapFeatureLayer',
 
     postCreate: function(){
       this.inherited(arguments) 
@@ -49,15 +49,21 @@ function(declare, BaseWidget, _WidgetsInTemplateMixin, on, Select, Button, Check
       this.initSliders() 
       this.hideShowHeatMapSlider() 
       this.initHeatMapSlider() 
-      this.slider = dom.byId('showingSlider') 
-      domStyle.set(this.slider, 'display', 'none')
 
-      this.map.on('layer-add', function (evt) {
+      this.map.on('layer-add-result', function (evt) {
+        if (this._isHeatmapLayer(evt.layer)) {
+          return;
+        }
+
         this.webMapLayers.addLayers(this.map, [evt.layer])
         if (this.layerId === null) {
           this.initSelect(evt.layer.id)
         }
       }.bind(this));
+    },
+
+    _isHeatmapLayer: function(layer) {
+      return layer.id && layer.id.indexOf(this.idPrefix) > -1;
     },
 
     initLayerChooser: function(){
@@ -67,73 +73,62 @@ function(declare, BaseWidget, _WidgetsInTemplateMixin, on, Select, Button, Check
           map: this.map,
           geometry: 'point' //options: 'point', 'polygon', 'line', 'multiPatch' or '*'
         })
-
-        this.layerChooser.on('change', function(value){
-          this.options(value)
-        }.bind(this));
+        this.layerChooser.on('change', this.options.bind(this));
 
         this.layerName = this.webMapLayers.selected()
         this.initSelect(this.layerName)
-
       },
 
     initSelect: function(layerId){
       if (layerId) {
-        this.field = this.selectField.value
+        this.field = this.selectField.value;
         this.selectField.on('change', function(value){
-          this.field = value
-        }.bind(this))
+          this.field = value;
+        }.bind(this));
 
-        this.options(layerId)
+        this.options(layerId);
       }
     },
 
     options: function(layerId){
         this.layerId = layerId
         var layer = this.map.getLayer(layerId)
-        var fields = layer.fields
+        var fields = layer.fields.slice(0);
+        fields.unshift({name: '*'});
 
         var map = fields.map(function(record){
             return dojo.create('option', {
               label: record.name,
               value: record.name
             }) 
-        }) 
+        })
 
         if(this.selectField.getOptions()){
             this.selectField.removeOption(this.selectField.getOptions())
-            this.selectField.addOption(map)
         }
+        this.selectField.addOption(map)
     },
 
     initButton: function(){
-        new Button({
-        label: 'Execute',
-        onClick: function(){
-            this.displayHeatMapLayer()
-         }.bind(this)
-        }, 'executeHeatMap').startup() 
+      this.executeHeatMap.on('click', this.displayHeatMapLayer.bind(this))
     },
 
     initSliders: function(){
         var valueBlurRadius = 10 
-        new HorizontalSlider({
-            id: 'blurRadius',
+        this.blurRadiusSlider = new HorizontalSlider({
             value: valueBlurRadius,
             minimum: 0,
             maximum: 30,
             style: 'width:300px ',
-            onChange: function(value){
-                this.blurRadius = value
-                dom.byId('blurRadiusDom').innerHTML = value.toFixed(0) 
-            }.bind(this)
-        }, 'blurRadiusNode').startup()
-        dom.byId('blurRadiusDom').innerHTML = valueBlurRadius 
+        }, this.blurRadiusSlider);
+        this.blurRadiusSlider.startup()
+        this.blurRadiusSliderValue.innerHTML = valueBlurRadius
 
-        var blurRadiusSlider = dijit.byId('blurRadius') 
-        this.blurRadius = blurRadiusSlider.value 
-        blurRadiusSlider.on('change', function(){
-            var value = this.get('value') 
+        this.blurRadius = this.blurRadiusSlider.get('value')
+        this.blurRadiusSlider.on('change', function(value){
+            this.blurRadius = value
+            this.blurRadiusSliderValue.innerHTML = value.toFixed(0)
+
             if(this.heatmapRenderer !== null){
                 if (value !== this.heatmapRenderer.blurRadius) {
                 this.heatmapRenderer.blurRadius = value
@@ -142,24 +137,20 @@ function(declare, BaseWidget, _WidgetsInTemplateMixin, on, Select, Button, Check
             }
         }.bind(this))
 
-        var valueMaxValue = 100 
-        new HorizontalSlider({
-            id: 'maxValue',
+        var valueMaxValue = 100
+        this.maxValueSlider = new HorizontalSlider({
             value: valueMaxValue,
             minimum: 0,
             maximum: 500,
             style: 'width:300px ',
-            onChange: function(value){
-                this.maxValue = value
-                dom.byId('maxValueDom').innerHTML = value.toFixed(0) 
-            }.bind(this)
-        }, 'maxValueNode').startup() 
-        dom.byId('maxValueDom').innerHTML = valueMaxValue 
+        }, this.maxValueSlider);
+        this.maxValueSlider.startup()
+        this.maxSliderValue.innerHTML = valueMaxValue
 
-        var maxValueSlider = dijit.byId('maxValue') 
-        this.maxValue = maxValueSlider.value 
-        maxValueSlider.on('change', function(){
-            var value = this.get('value') 
+        this.maxValue = this.maxValueSlider.value
+        this.maxValueSlider.on('change', function(value){
+            this.maxValue = value
+            this.maxSliderValue.innerHTML = value.toFixed(0)
             if(this.heatmapRenderer !== null){
                 if (value !== this.heatmapRenderer.maxPixelIntensity) {
                 this.heatmapRenderer.maxPixelIntensity = value
@@ -168,45 +159,41 @@ function(declare, BaseWidget, _WidgetsInTemplateMixin, on, Select, Button, Check
             }
         }.bind(this))
 
-        var valueMinValue = 1 
-        new HorizontalSlider({
-            id: 'minValue',
+        var valueMinValue = 1
+        this.minValueSlider = new HorizontalSlider({
             value: valueMinValue,
             minimum: 0,
             maximum: 500,
             style: 'width:300px ',
-            onChange: function(value){
-                this.minValue = value
-                dom.byId('minValueDom').innerHTML = value.toFixed(0) 
-            }.bind(this)
-        }, 'minValueNode').startup() 
-        dom.byId('minValueDom').innerHTML = valueMinValue 
+        }, this.minValueSlider);
+        this.minValueSlider.startup()
+        this.minSliderValue.innerHTML = valueMinValue
 
-        var minValueSlider = dijit.byId('minValue') 
-        this.minValue = minValueSlider.value 
-        minValueSlider.on('change', function(){
-            var value = this.get('value') 
+        this.minValue = this.minValueSlider.value
+        this.minValueSlider.on('change', function(value){
+            this.minValue = value
+            this.minSliderValue.innerHTML = value.toFixed(0)
             if(this.heatmapRenderer !== null){
                 if (value !== this.heatmapRenderer.minPixelIntensity) {
-                this.heatmapRenderer.minPixelIntensity = value
-                this.heatmapFeatureLayer.redraw()
+                  this.heatmapRenderer.minPixelIntensity = value
+                  this.heatmapFeatureLayer.redraw()
                 }
             }
         }.bind(this))
     },
       
     hideShowHeatMapSlider: function(){
-        new CheckBox({
+      this.heatmapSliderHideShow = new CheckBox({
         name: 'hideShowSlider',
         checked: false,
         onChange: function(evt){ 
             if(evt === true){
-            domStyle.set(this.slider, 'display', 'block')
+              domStyle.set(this.showingSlider, 'display', 'block')
             } else{
-                domStyle.set(this.slider, 'display', 'none')
+              domStyle.set(this.showingSlider, 'display', 'none')
             }
          }.bind(this)
-        }, 'heatmapSliderHideShow').startup() 
+        }, this.heatmapSliderHideShow);
     },
 
     initHeatMapSlider: function(){
@@ -261,12 +248,12 @@ function(declare, BaseWidget, _WidgetsInTemplateMixin, on, Select, Button, Check
             }
         ] 
 
-        var heatmapSliderDev = new HeatmapSlider({
+        this.heatmapSliderDev = new HeatmapSlider({
           'colorStops': this.myStops
-        }, 'heatmapSliderDev') 
-        heatmapSliderDev.startup() 
+        }, this.heatmapSliderDev);
+        this.heatmapSliderDev.startup();
 
-        heatmapSliderDev.on('change', function(evt){
+        this.heatmapSliderDev.on('change', function(evt){
           if(this.heatmapRenderer !== null){
             this.heatmapRenderer.setColorStops(evt)
             this.heatmapFeatureLayer.redraw()
@@ -276,6 +263,7 @@ function(declare, BaseWidget, _WidgetsInTemplateMixin, on, Select, Button, Check
 
     displayHeatMapLayer: function(){
         var heatmapFeatureLayerOptions = {
+          id: this.idPrefix + this.heatmapLayers.length,
           mode: FeatureLayer.MODE_SNAPSHOT,
           outFields: [this.field ? this.field : '*']
         }
@@ -320,35 +308,33 @@ function(declare, BaseWidget, _WidgetsInTemplateMixin, on, Select, Button, Check
 
     displayClearButton: function(heatMapLayer){
         this.heatmapLayers.push(heatMapLayer)
-        new Button({
-            label: 'Remove all HeatMap layers',
-            id: heatMapLayer.id + '_' + this.field + '_button',
-            onClick: function(){
-                if(this.heatmapLayers.length == 0){
-                    //Do nothing
-                } else{
-                    var dialog = new ConfirmDialog({
-                        title: 'Warning!',
-                        content: 'Do you want to remove all the heatMap layers?',
-                        style: 'width: 300px',
-                        onHide: function() {
-                            //Do nothing
-                         }
-                        })
-                        dialog.set('buttonOk','Yes')
-                        dialog.set('buttonCancel','No')
-                        dialog.on('execute', function(){
-                          for(i in this.heatmapLayers){
-                            this.map.removeLayer(this.heatmapLayers[i])
-                          }
-                        this.heatmapLayers.length = 0
-                        })
-                        dialog.on('cancel', function(){/*Do nothing*/})
-                        dialog.show()
-                }
-             }.bind(this)
-            }, 'clearLayers').startup()
-    }
+        this.clearLayers.on('click', this._showRemoveDialog.bind(this));
+        domStyle.set(this.clearLayers.domNode, 'display', '')
+    },
+
+    _showRemoveDialog: function() {
+      if(this.heatmapLayers.length > 0){
+        var dialog = new ConfirmDialog({
+          title: this.nls.removeTitle,
+          content: this.nls.removeDescription,
+          style: 'width: 300px',
+          onHide: function() { }
+        })
+        dialog.set('buttonOk', this.nls.removeConfirm)
+        dialog.set('buttonCancel', this.nls.removeCancel)
+        dialog.on('execute', this._removeHeatmapLayers.bind(this))
+        dialog.on('cancel', function(){ })
+        dialog.show()
+      }
+    },
+
+    _removeHeatmapLayers: function() {
+      for(var i in this.heatmapLayers){
+        this.map.removeLayer(this.heatmapLayers[i])
+      }
+      this.heatmapLayers.length = 0
+      domStyle.set(this.clearLayers.domNode, 'display', 'none')
+    },
 
   }) 
 }) 
