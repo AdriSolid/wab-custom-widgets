@@ -18,7 +18,7 @@ Don't forget to add the [Cedar dependencies](https://github.com/esri/cedar#loadi
 
 **List of the latest enhancements and changes:**
 - Added a new class => select the layers ids from the Web Map (Dojo Select) 
-- Added geometry icon
+- Added geometry icon; geometry selector (now => "*")
 
 
 ***
@@ -100,8 +100,6 @@ IntroJS: function(){
 The [HeatmapRenderer](https://developers.arcgis.com/javascript/3/jsapi/heatmaprenderer-amd.html) renders feature layer point data into a raster visualization that emphasizes areas of higher density or weighted values. This renderer uses a Gaussian Blur technique to average the influence of each point out over the area determined by the 'blurRadius' (the radius (in pixels) of the circle over which the majority of each point's value is spread out.). A Gaussian blur uses a Gaussian, or Normal, distribution (also called a Bell-curve) to spread value out in vertical and horizontal directions. 
 
 ### Using HeatMap Widget
-
-![.](http://adri2c.maps.arcgis.com/sharing/rest/content/items/db76b9224508419c90c332f17ec2ce0d/data)
 
 - Select a layer (it needs point type; the widget is already prepared for filter the layers and get 'point' layers)
 - Select a field (numeric -short, float, etc-)
