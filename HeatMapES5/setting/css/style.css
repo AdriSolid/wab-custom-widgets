@@ -1,0 +1,60 @@
+
+.jimu-widget-heat-map-setting .color-stop {
+    width: 250px;
+    height: 25px;
+    display: inline-block;
+}
+
+.jimu-widget-heat-map-setting .add-color {
+    width: 25px;
+    height: 25px;
+    font-size: 25px;
+    font-weight: bold
+}
+
+.jimu-widget-heat-map-setting .add-color:hover {
+    color: #0db2ef;
+}
+
+.jixxxx_-mu-widget-heat-map-setting .remove-color:hover {
+    color: #ef0010;
+}
+
+
+.jimu-widget-heat-map-setting .color-row {
+    width: 100%;
+    height: 25px;
+    padding: 0 10px;
+}
+
+.jimu-widget-heat-map-setting .color-row button {
+    width: 25px;
+    height: 25px;
+    display: inline-block;
+    margin: 0;
+    border: none;
+    padding: 0;
+    text-align: center;
+    text-decoration: none;
+    background-color: transparent;
+    color: white;
+    font-weight: bold;
+    float: right;
+}
+
+.jimu-widget-heat-map-setting .color-row:hover .edit-color {
+    content: url(images/pencil.svg);
+}
+
+.jimu-widget-heat-map-setting .color-row .edit-color:hover {
+    content: url(images/pencil_hover.svg);
+}
+
+
+.jimu-widget-heat-map-setting .color-row:hover .remove-color {
+    content: url(images/minus.svg);
+}
+
+.jimu-widget-heat-map-setting .color-row .remove-color:hover {
+    content: url(images/minus_hover.svg);
+}
