@@ -71,7 +71,7 @@ function(declare, BaseWidget, _WidgetsInTemplateMixin, on, Select, Button, Check
           selector: this.layerChooser,
           folderUrl: this.folderUrl,
           map: this.map,
-          geometry: 'point' //options: 'point', 'polygon', 'line', 'multiPatch' or '*'
+          geometry: this.config.geometry //'point' //options: 'point', 'polygon', 'line', 'multiPatch' or '*'
         })
         this.layerChooser.on('change', this.options.bind(this));
 
@@ -197,56 +197,7 @@ function(declare, BaseWidget, _WidgetsInTemplateMixin, on, Select, Button, Check
     },
 
     initHeatMapSlider: function(){
-        this.myStops = [
-            {'ratio':0,'color':{
-                'r':133,'g':193,'b':200,'a':0}
-            },
-            {'ratio':0.01,'color':{
-                'r':133,'g':193,'b':200,'a':0}
-            },
-            {'ratio':0.01,'color':{
-                'r':133,'g':193,'b':200,'a':0.7}
-            },
-            {'ratio':0.01,'color':{
-                'r':133,'g':193,'b':200,'a':0.7}
-            },
-            {'ratio':0.0925,'color':{
-                'r':144,'g':161,'b':190,'a':0.7}
-            }, 
-            {'ratio':0.17500000000000002,'color':{
-                'r':156,'g':129,'b':132,'a':0.7}
-            },
-            {'ratio':0.2575,'color':{
-                'r':167,'g':97,'b':170,'a':0.7}
-            },
-            {'ratio':0.34,'color':{
-                'r':175,'g':73,'b':128,'a':0.7}
-            },
-            {'ratio':0.42250000000000004,'color':{
-                'r':184,'g':48,'b':85,'a':0.7}
-            },
-            {'ratio':0.505,'color':{
-                'r':192,'g':24,'b':42,'a':0.7}
-            },
-            {'ratio':0.5875,'color':{
-                'r':200,'g':0,'b':0,'a':0.7}
-            },
-            {'ratio':0.67,'color':{
-                'r':211,'g':51,'b':0,'a':0.7}
-            },
-            {'ratio':0.7525000000000001,'color':{
-                'r':222,'g':102,'b':0,'a':0.7}
-            },
-            {'ratio':0.8350000000000001,'color':{
-                'r':233,'g':153,'b':0,'a':0.7}
-            },
-            {'ratio':0.9175000000000001,'color':{
-                'r':244,'g':204,'b':0,'a':0.7}
-            },
-            {'ratio':1,'color':{
-                'r':255,'g':255,'b':0,'a':0.7}
-            }
-        ] 
+        this.myStops = this.config.colorStops;
 
         this.heatmapSliderDev = new HeatmapSlider({
           'colorStops': this.myStops

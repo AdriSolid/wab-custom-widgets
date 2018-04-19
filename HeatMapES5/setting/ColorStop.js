@@ -11,31 +11,31 @@ define([
 ], function(declare, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin,
             template, domConstruct, domStyle, on, Evented) {
   return declare([_WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin, Evented], { //
-    id: null,
+    dataId: null,
     nls: null,
-    color: null, // type: esri/Color!
+    color: null, // type: 'esri/Color'
     templateString: template,
     onEdit: null,
     onDelete: null,
 
-    pickerListener: null,
-
-    //constructor: function(options) {
-    //  this.nls = options.nls;
-    //  this.color = options.color;
-    //},
-
     postCreate: function(options) {
       this.inherited(arguments);
       this.setColor(this.color);
+
       on(this.editColor, 'click', this._editColor.bind(this))
       on(this.removeColor, 'click', this._removeColor.bind(this))
     },
 
     setColor: function(color) {
-      console.log("setColor")
       this.color = color;
-      domStyle.set(this.colorStop, 'background-color', this.color.toRgba());
+
+      var rgba = this.color.toRgba();
+      var backgroundColor = 'rgba(' + rgba[0] + ',' + rgba[1] + ',' + rgba[2] + ',' + rgba[3] + ')';
+      domStyle.set(this.colorStop, 'background-color', backgroundColor);
+    },
+
+    getDataId: function() {
+      return this.dataId;
     },
 
     getColor: function() {
@@ -43,12 +43,10 @@ define([
     },
 
     _editColor: function() {
-      console.log("edit color")
       this.onEdit(this, this.color);
     },
 
     _removeColor: function() {
-      console.log("remove color")
       this.onDelete(this);
     },
   });

@@ -1,3 +1,6 @@
+.hidden {
+    display: none;
+}
 
 .jimu-widget-heat-map-setting .color-stop {
     width: 250px;
