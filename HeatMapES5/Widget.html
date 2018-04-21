@@ -1,5 +1,6 @@
 <div>
   <table>
+<<<<<<< HEAD
     <tr class="spaceUnder">
       <td>
         ${nls.selectLayer} <div id="layerChooserNode"></div>
@@ -45,5 +46,52 @@
         <div id="clearLayers"></div>
       </td>
     </tr>
+=======
+	  <tr class="spaceUnder">
+			<td>
+				${nls.selectLayer} <div data-dojo-type="dijit/form/Select" data-dojo-attach-point="layerChooser"></div>
+			</td>
+	  </tr>
+	  <tr class="spaceUnder">
+			<td>
+				${nls.selectField} <div data-dojo-type="dijit/form/Select" data-dojo-attach-point="selectField"></div>
+			</td>
+	  </tr>
+    <tr class="spaceUnder">
+			<td>
+				${nls.blurRadius} <span data-dojo-attach-point="blurRadiusSliderValue"></span> <div data-dojo-attach-point="blurRadiusSlider"></div>
+			</td>
+	  </tr>
+    <tr class="spaceUnder">
+			<td>
+				${nls.maxValue} <span data-dojo-attach-point="maxSliderValue"></span> <div data-dojo-attach-point="maxValueSlider"></div>
+			</td>
+	  </tr>
+    <tr class="spaceUnder">
+			<td>
+				${nls.minValue} <span data-dojo-attach-point="minSliderValue"></span> <div data-dojo-attach-point="minValueSlider"></div>
+			</td>
+	  </tr>
+    <tr class="spaceUnder">
+			<td>
+				${nls.heatMapSlider} <div data-dojo-attach-point="heatmapSliderHideShow"></div>
+			</td>
+	  </tr>
+    <tr data-dojo-attach-point="showingSlider" style="display: none" class="spaceUnder">
+			<td>
+				<div data-dojo-attach-point="heatmapSliderDev"></div>
+			</td>
+	  </tr>
+    <tr class="spaceUnder">
+			<td>
+				<div data-dojo-type="dijit/form/Button" data-dojo-attach-point="executeHeatMap" data-dojo-props="label: '${nls.executeButtonText}'"></div>
+			</td>
+	  </tr>
+		<tr class="spaceUnder">
+			<td>
+				<div style="display: none" data-dojo-type="dijit/form/Button" data-dojo-attach-point="clearLayers" data-dojo-props="label: '${nls.clearButtonText}'"></div>
+			</td>
+	  </tr>
+>>>>>>> 3666a0b360a757ae27c873fe93065274c4ee7432
   </table>
 </div>

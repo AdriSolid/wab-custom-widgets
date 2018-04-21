@@ -2,3 +2,6 @@ tr.spaceUnder > td {
  padding-bottom: 1em;
 }
 
+.hidden {
+ display: none;
+}
