@@ -1,5 +1,5 @@
 {
-  "geometry": "line",
+  "geometry": "*",
   "colorStops": [
     {"ratio":0,"color":{"r":133,"g":193,"b":200,"a":0}},
     {"ratio":0.01,"color":{"r":133,"g":193,"b":200,"a":0}},
