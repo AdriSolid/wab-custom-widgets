@@ -1,19 +1,19 @@
 define([
   'dojo/_base/declare',
-  "dijit/form/Select",
-  "dojo/dom-construct",
-  "dojo/dom-attr",
-  "dojo/dom",
-  "dojo/on",
-  "dojo/domReady!"
+  'dijit/form/Select',
+  'dojo/dom-construct',
+  'dojo/dom-attr',
+  'dojo/dom',
+  'dojo/on',
+  'dojo/domReady!'
 ], function(declare, Select, domConstruct, domAttr, dom, on){
   var clazz = declare(null, {
    
     constructor: function(options){
-      this.createLayerSelect(options.idForChangeEvent, options.layerNode, options.map, options.geometry)
+      this.createLayerSelect(options.idForChangeEvent, options.layerNode, options.map, options.geometry, options.imageFolderUrl)
     },
 
-    createLayerSelect: function(id, layerNode, map, geometry){
+    createLayerSelect: function(id, layerNode, map, geometry, imageFolder){
 
       new Select({
         name: layerNode,
@@ -33,22 +33,22 @@ define([
         switch(true){
           case record.geometryType === "esriGeometryPolygon" && (geometry === '*' || geometry === 'polygon'):
             return dojo.create("option", {
-              label: '<img src="https://adrisolid.github.io/CedarWidget/jimu.js/css/images/polygon_layer1.png" height="12.5" width="12.5"> ' + record.name,
+              label: '<img src="' + imageFolder + 'images/polygon_layer.png" height="12.5" width="12.5"> ' + record.name,
               value: record.id
             })
           case record.geometryType === "esriGeometryPoint" && (geometry === '*' || geometry === 'point'):
             return dojo.create("option", {
-              label: '<img src="https://adrisolid.github.io/CedarWidget/jimu.js/css/images/point_layer1.png" height="12.5" width="12.5"> ' + record.name,
+              label: '<img src="' + imageFolder + 'images/point_layer.png" height="12.5" width="12.5"> ' + record.name,
               value: record.id
             })
           case record.geometryType === "esriGeometryLine" && (geometry === '*' || geometry === 'line'):
             return dojo.create("option", {
-              label: '<img src="https://adrisolid.github.io/CedarWidget/jimu.js/css/images/line_layer1.png" height="12.5" width="12.5"> ' + record.name,
+              label: '<img src="' + imageFolder + 'images/line_layer.png" height="12.5" width="12.5"> ' + record.name,
               value: record.id
             })
           case record.geometryType === "esriGeometryPolyLine" && (geometry === '*' || geometry === 'line'):
             return dojo.create("option", {
-              label: '<img src="https://adrisolid.github.io/CedarWidget/jimu.js/css/images/line_layer1.png" height="12.5" width="12.5"> ' + record.name,
+              label: '<img src="' + imageFolder + 'images/line_layer.png" height="12.5" width="12.5"> ' + record.name,
               value: record.id
             })
           case record.geometryType === "esriGeometryMultiPatch" && (geometry === '*' || geometry === 'multiPatch'):
@@ -56,16 +56,13 @@ define([
               label: '<span><strong> M</strong></span> ' + record.name,
               value: record.id
             })
-          /*default:
-            return dojo.create("option", {
-              label: record.name,
-              value: record.id
-          })*/
+          default:
+            return null
         }
       })
 
       var selectLayer = dijit.byId(id)
-            selectLayer.addOption(recording)
+          selectLayer.addOption(recording)
     },
 
   });
