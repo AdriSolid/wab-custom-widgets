@@ -46,7 +46,7 @@ function(declare, BaseWidget, on, lang, Select, Button, CheckBox, idWebMapLayers
       this.initHeatMapSlider() 
       this.slider = dom.byId('showingSlider') 
       domStyle.set(this.slider, 'display', 'none') 
-      console.log('init')
+      console.log('_init')
     },
 
     initLayerChooser: function(){
@@ -300,7 +300,7 @@ function(declare, BaseWidget, on, lang, Select, Button, CheckBox, idWebMapLayers
                 } else{
                     var dialog = new ConfirmDialog({
                         title: this.nls.alertTitle,
-                        content: this.nls.alertCotent,
+                        content: this.nls.alertContent,
                         style: "width: 300px",
                         onHide: function(){/*Do nothing*/}
                         })
