@@ -56,7 +56,8 @@ function(declare, BaseWidget, on, lang, Select, Button, CheckBox, idWebMapLayers
           idForChangeEvent: idForChangeEvent,
           layerNode: "layerChooserNode",
           map: this.map,
-          geometry: "point" //options: 'point', 'polygon', 'line', 'multiPatch' or '*'
+          geometry: "point", //options: 'point', 'polygon', 'line', 'multiPatch' or '*'
+          imageFolderUrl: this.folderUrl
         }) 
 
         this.layerName = dijit.byId(idForChangeEvent).value
@@ -104,7 +105,7 @@ function(declare, BaseWidget, on, lang, Select, Button, CheckBox, idWebMapLayers
 
     initButton: function(){
         new Button({
-        label: "Execute",
+        label: this.nls.execute,
         onClick: lang.hitch(this, function(){
             this.displayHeatMapLayer() 
          })
@@ -291,22 +292,20 @@ function(declare, BaseWidget, on, lang, Select, Button, CheckBox, idWebMapLayers
     displayClearButton: function(heatMapLayer){
         this.heatmapLayers.push(heatMapLayer)
         new Button({
-            label: "Remove all HeatMap layers",
+            label: this.nls.removeButton,
             id: heatMapLayer.id + "_" + this.field + "_button",
             onClick: lang.hitch(this, function(){ 
                 if(this.heatmapLayers.length == 0){
                     //Do nothing
                 } else{
                     var dialog = new ConfirmDialog({
-                        title: "Warning!",
-                        content: "Do you want to remove all the heatMap layers?",
+                        title: this.nls.alertTitle,
+                        content: this.nls.alertCotent,
                         style: "width: 300px",
-                        onHide: function() {
-                            //Do nothing
-                         }
+                        onHide: function(){/*Do nothing*/}
                         })
-                        dialog.set("buttonOk","Yes")
-                        dialog.set("buttonCancel","No")
+                        dialog.set("buttonOk", this.nls.alertButtonOk)
+                        dialog.set("buttonCancel", this.nls.alertButtonCancel)
                         dialog.on('execute', lang.hitch(this, function(){ 
                           for(i in this.heatmapLayers){
                             this.map.removeLayer(this.heatmapLayers[i])
