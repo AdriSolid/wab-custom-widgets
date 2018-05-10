@@ -111,7 +111,6 @@ function(declare, BaseWidget, on, lang, Select, Button, CheckBox, idWebMapLayers
       this.slider = dom.byId('showingSlider') 
       domStyle.set(this.slider, 'display', 'none') 
       domStyle.set('hideShowDrawIcons', 'display', 'none')
-      console.log('_init')
     },
 
     initLayerChooser: function(){
