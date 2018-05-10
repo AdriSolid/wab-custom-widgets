@@ -107,8 +107,9 @@ The [HeatmapRenderer](https://developers.arcgis.com/javascript/3/jsapi/heatmapre
 - Slider: select 'Max Value' (The pixel intensity value which is assigned the final color in the color ramp. Values above this number             will also be assigned the final color ramp color)
 - Slider: select 'Min Value' (The pixel intensity value which is assigned the initial color in the color ramp. Values below this number           will also be assigned the initial color ramp color)
 - [Heat Map Slider](https://developers.arcgis.com/javascript/3/jsapi/heatmapslider-amd.html): (A widget to assist in obtaining values for managing and setting properties on a HeatmapRenderer)
+- Drawing Tools: Create a HeatMap using drawing tools as a spatial delimiter. Options => Polygon, Freehand Polygon, Circle, Ellipse, Rectangle
 
-![.](http://adri2c.maps.arcgis.com/sharing/rest/content/items/893dd8fab23140249db42c6d8ffd4ec6/data)
+![.](http://adri2c.maps.arcgis.com/sharing/rest/content/items/db76b9224508419c90c332f17ec2ce0d/data)
 
 
 ***
