@@ -12,27 +12,40 @@
     </tr>
     <tr class="spaceUnder">
       <td>
-        Blur Radius <span id="blurRadiusDom"></span> <div id="blurRadiusNode"></div> 
+        ${nls.blurRadius} <span id="blurRadiusDom"></span> <div id="blurRadiusNode"></div> 
       </td>
     </tr>
     <tr class="spaceUnder">
       <td>
-        Max Value <span id="maxValueDom"></span> <div id="maxValueNode"></div>
+        ${nls.maxValue} <span id="maxValueDom"></span> <div id="maxValueNode"></div>
       </td>
     </tr>
     <tr class="spaceUnder">
       <td>
-        Min Value <span id="minValueDom"></span> <div id="minValueNode"></div>
+        ${nls.minValue} <span id="minValueDom"></span> <div id="minValueNode"></div>
       </td>
     </tr>
     <tr class="spaceUnder">
       <td>
-        Heat Map Slider <div id="heatmapSliderHideShow"></div>
+        ${nls.drawingTools} <div id="drawingToolsNode"></div>
+                              <div id="hideShowDrawIcons">
+                              <hr>
+                              <div id="icons"></div>
+                              <div class="jimu-btn" data-dojo-attach-event="onclick:clearDrawGraphics">${nls.clearGraphics}</div>
+                              <hr>
+                            </div>
+      </td>
+    </tr>
+    <tr class="spaceUnder">
+      <td>
+        ${nls.heatMapSlider} <div id="heatmapSliderHideShow"></div>
       </td>
     </tr>
     <tr id="showingSlider" class="spaceUnder">
       <td>
-        <div id="heatmapSliderDev"></div>
+        <div id="symbologyNode"></div>
+        <div id="heatmapSliderNode"></div>
+        <div id="heatmapSliderNode2"></div>
       </td>
     </tr>
     <tr class="spaceUnder">
