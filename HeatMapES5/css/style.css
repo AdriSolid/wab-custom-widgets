@@ -2,3 +2,16 @@ tr.spaceUnder > td {
  padding-bottom: 1em;
 }
 
+.drawIcons {
+    margin-left: 10px; 
+    margin-top: 10px; 
+    cursor: pointer;
+}
+
+.jimu-btn {
+    background: #24B5CC;
+}
+
+.jimu-btn:hover {
+    background-color: #0090A7; 
+}
