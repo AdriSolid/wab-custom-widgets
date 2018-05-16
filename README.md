@@ -5,7 +5,7 @@ Adrián Pérez Beneito Web App builder Custom Widget List
 - [Intro.js](https://github.com/AdriSolid/WAB-Custom-Widgets/blob/master/README.md#introjs-ft-wab-dizzy-live-demo)
 - [Heat Map](https://github.com/AdriSolid/WAB-Custom-Widgets/blob/master/README.md#heat-map-wab-27-fire-live-demo)
 - [ChartJS](https://github.com/AdriSolid/WAB-Custom-Widgets#chartjs-widget-chart_with_upwards_trend-live-demo)
-- [Buffer](https://github.com/AdriSolid/WAB-Custom-Widgets#chartjs-widget-chart_with_upwards_trend-live-demo)
+- [Buffer](https://github.com/AdriSolid/WAB-Custom-Widgets/blob/master/README.md#buffer-widget-redcircle-live-demo)
 
 
 ## Bar Chart Cedar :bar_chart: [live demo](https://adrisolid.github.io/CedarWidget/)
@@ -138,7 +138,7 @@ Chart.js is a community maintained [open-source library](https://github.com/char
 ***
 
 
-## Buffer Widget :red:circle: [live demo](https://adrisolid.github.io/Buffer/)
+## Buffer Widget :red_circle: [live demo](https://adrisolid.github.io/Buffer/)
 ### Using [Turf.js](http://turfjs.org/) .Advanced geospatial analysis for browsers and Node.js
 Turf is a JavaScript library for spatial analysis. It includes traditional spatial operations, helper functions for creating GeoJSON data, and data classification and statistics tools. Turf can be added to your website as a client-side plugin, or you can run Turf server-side with Node.js.
 
