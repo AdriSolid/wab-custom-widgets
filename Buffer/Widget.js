@@ -146,7 +146,7 @@ function(declare, BaseWidget, lang, idWebMapLayers, Select, domConstruct, TextBo
         return [record[0], record[1]]
       })
  
-      var polygonJson  = {"rings": [map], "spatialReference": {"wkid": 4326} }
+      var polygonJson = {"rings": [map], "spatialReference": {"wkid": 4326} }
       this.polygon = new Polygon(polygonJson)
       var symbol = new SimpleFillSymbol(
             SimpleFillSymbol.STYLE_SOLID,
@@ -181,6 +181,7 @@ function(declare, BaseWidget, lang, idWebMapLayers, Select, domConstruct, TextBo
       new Button({
         onClick: lang.hitch(this, function(){
             this.selectionManager.clearSelection(this.layer)
+            dom.byId('featureCountNode').innerHTML = 'Selected Features: 0'
         })
       }, 'clearSelection').startup() 
 
@@ -214,18 +215,19 @@ function(declare, BaseWidget, lang, idWebMapLayers, Select, domConstruct, TextBo
 
     intersects: function(){
       var query = new Query()
-              query.where = "1=1"
-              query.returnGeometry = true
-              query.geometry = this.polygon
-              query.outFields = ["*"]
-              new QueryTask(this.url).execute(query, lang.hitch(this, function(results){
-                this.selectionManager.setSelection(this.layer, results.features)
-              }))
+          query.where = "1=1"
+          query.returnGeometry = true
+          query.geometry = this.polygon
+          query.outFields = ["*"]
+          new QueryTask(this.url).execute(query, lang.hitch(this, function(results){
+            this.selectionManager.setSelection(this.layer, results.features)
+            dom.byId('featureCountNode').innerHTML = 'Selected Features: ' + results.features.length
+          }))
     },
 
     clearBuffers: function(){
       this.map.graphics.clear()
-       dijit.byId('clearBuffersButton').setDisabled(true)
+      dijit.byId('clearBuffersButton').setDisabled(true)
     }
   })
 })
