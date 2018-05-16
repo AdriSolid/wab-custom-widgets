@@ -7,5 +7,7 @@
   "description": "Buffer using Turf.js",
   "copyright": "",
   "license": "http://www.apache.org/licenses/LICENSE-2.0",
-  "hasConfig": false
+  "properties": {
+    "hasConfig": false
+  }
 }
