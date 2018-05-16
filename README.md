@@ -139,7 +139,7 @@ Chart.js is a community maintained [open-source library](https://github.com/char
 
 
 ## Buffer Widget :red_circle: [live demo](https://adrisolid.github.io/Buffer/)
-### Using [Turf.js](http://turfjs.org/) .Advanced geospatial analysis for browsers and Node.js
+### Using [Turf.js](http://turfjs.org/). Advanced geospatial analysis for browsers and Node.js
 Turf is a JavaScript library for spatial analysis. It includes traditional spatial operations, helper functions for creating GeoJSON data, and data classification and statistics tools. Turf can be added to your website as a client-side plugin, or you can run Turf server-side with Node.js.
 
 ### Integration with a Web App Builder app
