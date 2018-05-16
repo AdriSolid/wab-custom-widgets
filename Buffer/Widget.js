@@ -121,10 +121,12 @@ function(declare, BaseWidget, lang, idWebMapLayers, Select, domConstruct, TextBo
 
     executeBuffer: function(evt, mode){
       var coords;
-      mode === 'mapClick' ? 
-        coords = webMercatorUtils.xyToLngLat(evt.mapPoint.x, evt.mapPoint.y) :
+      if(mode === 'mapClick'){
+        coords = webMercatorUtils.xyToLngLat(evt.mapPoint.x, evt.mapPoint.y)
+      }else{
         coords = [dijit.byId('xNode').value, dijit.byId('yNode').value]
-
+      }
+  
       var pointSymbol = new SimpleMarkerSymbol(
           "cross",
           20,
@@ -158,7 +160,11 @@ function(declare, BaseWidget, lang, idWebMapLayers, Select, domConstruct, TextBo
        this.map.graphics.add(graphic)
        dijit.byId('clearBuffersButton').setDisabled(false)
 
-       dijit.byId('enabled').checked ? this.intersects() : this.selectionManager.clearSelection(this.layer)
+       if(dijit.byId('enabled').checked){
+        this.intersects()
+       }else{
+        this.selectionManager.clearSelection(this.layer)
+       }
     },
 
     createRadios: function(){
