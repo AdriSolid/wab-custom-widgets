@@ -1,0 +1,11 @@
+{
+  "name": "Buffer",
+  "platform": "HTML",
+  "version": "2.7",
+  "wabVersion": "2.7",
+  "author": "Adrian Perez Beneito",
+  "description": "Buffer using Turf.js",
+  "copyright": "",
+  "license": "http://www.apache.org/licenses/LICENSE-2.0",
+  "hasConfig": false
+}

@@ -1,0 +1,41 @@
+<div>
+  <table>
+    <tr class="spaceUnder">
+      <td>
+         ${nls.units} <div id="unitsNode"></div>
+      </td>
+    </tr>
+    <tr class="spaceUnder">
+      <td>
+         <label>${nls.distanceTextBox}</label> <br />
+         <input id="textBoxNode"/>
+      </td>
+    </tr>
+    <tr class="spaceUnder">
+      <td>
+         <label>${nls.textBoxCoord}</label> <br />
+         ${nls.xCoord} <input id="coordsXNode"/>
+         ${nls.yCoord} <input id="coordsYNode"/>
+         <div id="executeBufferCoords">${nls.executeCoordBuffer}</div>
+      </td>
+    </tr>
+    <tr class="spaceUnder">
+      <td>
+        ${nls.intersection} <div id="selectionNode"></div>
+        <div id="hideShowSelectionTools">
+          <hr>
+            ${nls.selectLayer} <div id="layerChooserNode"></div> <br />
+            <input type="radio" id="enabled" value="enableSelection"/> <label for="enabled">${nls.enableSelection}</label> <br />
+            <input type="radio" id="disabled" value="disableSelection"/> <label for="disabled">${nls.disableSelection}</label> <br />
+            <div id="clearSelection">${nls.clearSelection}</div> <br />
+        </div>
+      </td>
+    </tr>
+    <tr class="spaceUnder">
+      <td>
+        <hr>
+        <div id="clearBuffers" disabled>${nls.clearBuffers}</div>
+      </td>
+    </tr>
+  </table>
+</div>
