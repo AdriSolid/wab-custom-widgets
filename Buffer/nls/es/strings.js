@@ -1,8 +1,8 @@
-﻿define({
+define({
   root: ({
     _widgetLabel: "Demostración",
-    selectLayer: "Select a layer",
-    units: "Select a unit",
+    selectLayer: "Seleccciona una capa",
+    units: "Selecciona una unidad",
     distanceTextBox: "Distancia",
     textBoxCoord: "Clica en el mapa o inserta coordenadas",
     xCoord: "X",
@@ -12,8 +12,8 @@
     enableSelection: "Activar",
     disableSelection: "Desactivar",
     clearSelection: "Limpiar Selección",
-    clearGraphics: "Clear",
-    execute: "Execute",
+    clearGraphics: "Limpiar",
+    execute: "Ejecutar",
     xPlaceholder: "-0.48",
     yPlaceholder: "38.69",
     distanceValue: "2000",
