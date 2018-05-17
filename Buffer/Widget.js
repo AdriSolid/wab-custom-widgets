@@ -34,6 +34,7 @@ function(declare, BaseWidget, lang, idWebMapLayers, Select, domConstruct, TextBo
     url: null,
     polygon: null,
     selectionManager: SelectionManager.getInstance(),
+    clickEvent: null,
 
     startup: function() {
       this.inherited(arguments);
@@ -43,13 +44,16 @@ function(declare, BaseWidget, lang, idWebMapLayers, Select, domConstruct, TextBo
       this.initDistance()
       this.createRadios()
       this.selectFeatures()
-      this.map.on("click", lang.hitch(this, function(evt){
-        this.executeBuffer(evt, 'mapClick')
-      }))
       domStyle.set('hideShowSelectionTools', 'display', 'none')
     },
+          
+    onOpen: function(){
+        this.clickEvent = this.map.on("click", lang.hitch(this, function(evt){
+          this.executeBuffer(evt, 'mapClick')
+        }))
+    },
 
-     initLayerChooser: function(){
+    initLayerChooser: function(){
         var idForChangeEvent = "layerChooserNodeEvent" 
 
         new idWebMapLayers({
@@ -62,13 +66,13 @@ function(declare, BaseWidget, lang, idWebMapLayers, Select, domConstruct, TextBo
 
         this.layer = this.map.getLayer(dijit.byId(idForChangeEvent).value)
         this.url = this.layer.url
-    
+
         dijit.byId(idForChangeEvent).on("change", lang.hitch(this, function(evt){
           this.layer = this.map.getLayer(evt)
           this.url = this.layer.url
         }))
     },
-
+          
     initCoords: function(){
       new TextBox({
         id: 'xNode',
@@ -228,6 +232,10 @@ function(declare, BaseWidget, lang, idWebMapLayers, Select, domConstruct, TextBo
     clearBuffers: function(){
       this.map.graphics.clear()
       dijit.byId('clearBuffersButton').setDisabled(true)
+    },
+          
+    onClose: function(){
+      this.clickEvent.remove()
     }
   })
 })
