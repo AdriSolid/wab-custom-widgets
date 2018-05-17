@@ -5,7 +5,7 @@ Adrián Pérez Beneito Web App builder Custom Widget List
 - [Intro.js](https://github.com/AdriSolid/WAB-Custom-Widgets/blob/master/README.md#introjs-ft-wab-dizzy-live-demo)
 - [Heat Map](https://github.com/AdriSolid/WAB-Custom-Widgets/blob/master/README.md#heat-map-wab-27-fire-live-demo)
 - [ChartJS](https://github.com/AdriSolid/WAB-Custom-Widgets#chartjs-widget-chart_with_upwards_trend-live-demo)
-- [Buffer](https://github.com/AdriSolid/WAB-Custom-Widgets/blob/master/README.md#buffer-widget-redcircle-live-demo)
+- [Buffer](https://github.com/AdriSolid/WAB-Custom-Widgets/blob/master/README.md#buffer-widget-red_circle-live-demo)
 
 
 ## Bar Chart Cedar :bar_chart: [live demo](https://adrisolid.github.io/CedarWidget/)
@@ -107,10 +107,11 @@ The [HeatmapRenderer](https://developers.arcgis.com/javascript/3/jsapi/heatmapre
 - Slider: select 'Blur Radius' (The radius -in pixels- of the circle over which the majority of each point's value is spread out)
 - Slider: select 'Max Value' (The pixel intensity value which is assigned the final color in the color ramp. Values above this number             will also be assigned the final color ramp color)
 - Slider: select 'Min Value' (The pixel intensity value which is assigned the initial color in the color ramp. Values below this number           will also be assigned the initial color ramp color)
+- Draw Tools: Generate the map by spatially delimiting the result using drawing tools
 - [Heat Map Slider](https://developers.arcgis.com/javascript/3/jsapi/heatmapslider-amd.html): (A widget to assist in obtaining values for managing and setting properties on a HeatmapRenderer)
 - Drawing Tools: Create a HeatMap using drawing tools as a spatial delimiter. Options => Polygon, Freehand Polygon, Circle, Ellipse, Rectangle
 
-![.](http://adri2c.maps.arcgis.com/sharing/rest/content/items/db76b9224508419c90c332f17ec2ce0d/data)
+![.](http://adri2c.maps.arcgis.com/sharing/rest/content/items/a6490383b48e4491afb2b9650375cec8/data)
 
 
 ***
