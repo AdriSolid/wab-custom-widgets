@@ -132,8 +132,8 @@ Chart.js is a community maintained [open-source library](https://github.com/char
 - Select a layer 
 - Select a field for 'x' axis
 - Select a field for 'y' axis
-- Select a chart type
 - Click 'Execute' button
+- Click on the tabs to switch the chart. Both graphics will be executed automatically. These will be filtered every time the map extension changes
 
 
 ***
