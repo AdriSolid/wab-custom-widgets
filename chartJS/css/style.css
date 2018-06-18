@@ -1,10 +1,6 @@
 tr.spaceUnder > td {
- padding-bottom: 1em;
+ padding-bottom: 0.6em;
  padding-right: 3em;
-}
-
-tr.spaceChart > td {
- padding-bottom: 3em;
 }
 
 canvas {
@@ -14,4 +10,14 @@ canvas {
 .chart-container {
   position: relative;
   margin: auto;
+  padding-top: 0.6em;
+}
+
+#executeJimuButton {
+  background: #24B5CC;
+  line-height: 25px;
+}
+
+#executeJimuButton:hover {
+  background-color: #0090A7; 
 }
