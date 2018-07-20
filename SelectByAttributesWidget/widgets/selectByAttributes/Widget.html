@@ -1,0 +1,75 @@
+<div>
+  <p>Enter a WHERE clause to select records in the table window.</p>
+  <div id="layerChooserNode"></div><br>
+  <select multiple class="form-control" id="fieldsMultiSelect"></select><br>
+  <table>
+    <tr class="spaceUnder">
+      <td>
+        <div data-dojo-attach-point="equal"></div>
+      </td>
+      <td>
+        <div data-dojo-attach-point="notIn"></div>
+      </td>
+      <td>
+        <div data-dojo-attach-point="like"></div>
+      </td>
+      <td rowspan="4">
+        <select multiple class="form-control" id="uniquesMultiSelect"></select>
+      </td>
+    </tr>
+    <tr class="spaceUnder">
+      <td>
+        <div data-dojo-attach-point="major"></div>
+      </td>
+      <td>
+        <div data-dojo-attach-point="majorEqual"></div>
+      </td>
+      <td>
+        <div data-dojo-attach-point="And"></div>
+      </td>
+    </tr>
+    <tr class="spaceUnder">
+      <td>
+        <div data-dojo-attach-point="minor"></div>
+      </td>
+      <td>
+         <div data-dojo-attach-point="minorEqual"></div>
+      </td>
+      <td>
+        <div data-dojo-attach-point="Or"></div>
+      </td>
+    </tr>
+    <tr class="spaceUnder">
+      <td>
+        <div data-dojo-attach-point="percentage"></div>
+      </td>
+      <td>
+        <div data-dojo-attach-point="parenthesis"></div>
+      </td>
+      <td>
+        <div data-dojo-attach-point="Not"></div>
+      </td>
+    </tr>
+    <tr class="spaceUnder">
+      <td>
+        <div data-dojo-attach-point="Is"></div>
+      </td>
+      <td>
+        <div data-dojo-attach-point="In"></div>
+      </td>
+      <td>
+        <div data-dojo-attach-point="Null"></div>
+      </td>
+      <td>
+        <div class="jimu-btn getUniqueValues jimuCustomColor" data-dojo-attach-event="onclick:_getUniqueValues"> ${nls.getUniqueValues} </div>
+      </td>
+    </tr>
+  </table><br>
+  <span data-dojo-attach-point="selectFrom"></span><br>
+  <input type="text" class="form-control" id="textBoxNode"><br>
+  <div class="jimu-btn getUniqueValues jimuCustomColor" data-dojo-attach-event="onclick:_clearSelection"> Clear </div>
+  <div class="jimu-btn getUniqueValues jimuCustomColor" data-dojo-attach-event="onclick:_confirmQuery"> Verify </div>
+  <div class="jimu-btn getUniqueValues jimuCustomColor" onclick=" window.open('http://desktop.arcgis.com/es/arcmap/latest/map/working-with-layers/building-a-query-expression.htm')"> Help </div><br><br>
+  <div class="jimu-btn getUniqueValues jimuCustomColor" data-dojo-attach-event="onclick:_performQuery"> Execute </div>
+  <div data-dojo-attach-point="loadingNode"></div>
+</div>

@@ -1,0 +1,10 @@
+{
+  "name": "selectByAttributes",
+  "platform": "HTML",
+  "version": "2.8",
+  "wabVersion": "2.8",
+  "author": "Adrián Pérez Beneito",
+  "description": "Select by attributes the WebMap layers",
+  "copyright": "",
+  "license": ""
+}

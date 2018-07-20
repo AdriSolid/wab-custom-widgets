@@ -1,0 +1,14 @@
+{
+  "name": "Demo",
+  "platform": "HTML",
+  "version": "2.8",
+  "wabVersion": "2.8",
+  "author": "Esri R&D Center Beijing",
+  "description": "This is the widget used in developer guide",
+  "copyright": "",
+  "license": "http://www.apache.org/licenses/LICENSE-2.0",
+  "featureActions": [{
+    "name": "ShowVertex",
+    "uri": "ShowVertexFeatureAction"
+  }]
+}

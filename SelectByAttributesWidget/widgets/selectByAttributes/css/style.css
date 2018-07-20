@@ -1,0 +1,26 @@
+tr.spaceUnder > td {
+  padding-bottom: 0.1em; 
+}
+
+.claro .dijitButton .dijitButtonNode, .button {
+  width : 40px;
+}
+
+.jimuCustomColor{
+  background: #24B5CC;
+}
+
+.jimuCustomColor:hover{
+  background-color: #0090A7; 
+}
+
+.getUniqueValues{
+  line-height: 22px;
+  font-size: 12px;
+  padding: 0 8px;
+}
+
+#uniquesMultiSelect{
+  width: 235px;
+  height: 115px;
+}

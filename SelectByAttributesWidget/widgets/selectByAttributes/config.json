@@ -1,0 +1,5 @@
+{
+  "ids": ["equal", "notIn", "like", "major", "majorEqual", "And", "minor", "minorEqual", "Or", "percentage", "parenthesis",
+	      "Not", "Is", "In", "Null"]
+}
+
