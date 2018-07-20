@@ -121,7 +121,7 @@ function(declare, lang, domConstruct, domStyle, Deferred, dom,
       });
 
       $('#uniquesMultiSelect').on('change', function(){
-        $('#textBoxNode').val( $('#textBoxNode').val() + $(this).val() );
+        $('#textBoxNode').val( $('#textBoxNode').val() + "'" + $(this).val() + "'" );
       });
     },
 
