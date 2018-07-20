@@ -6,6 +6,7 @@ Adrián Pérez Beneito Web App builder Custom Widget List
 - [Heat Map](https://github.com/AdriSolid/WAB-Custom-Widgets/blob/master/README.md#heat-map-wab-27-fire-live-demo)
 - [ChartJS](https://github.com/AdriSolid/WAB-Custom-Widgets#chartjs-widget-chart_with_upwards_trend-live-demo)
 - [Buffer](https://github.com/AdriSolid/WAB-Custom-Widgets/blob/master/README.md#buffer-widget-red_circle-live-demo)
+- [Select by Attributes]()
 
 
 ## Bar Chart Cedar :bar_chart: [live demo](https://adrisolid.github.io/CedarWidget/)
@@ -155,6 +156,23 @@ Turf is a JavaScript library for spatial analysis. It includes traditional spati
 - Pick on the map or input the coordinates
 - Select the distance
 - Intersection selection available. Select a layer and enable or disable the selection. Click the 'Execute' button
+
+
+
+***
+
+
+## Select by Attributes Widget :diamond_shape_with_a_dot_inside: [live demo](https://adrisolid.github.io/SelectByAttributesWidget/)
+
+### Usage
+
+This WAB widget copies part of the functionality of the famous 'Select by Attributes' of ArcMap.
+
+'Select By Attributes allows you to provide a SQL query expression that is used to select features that match the selection criteria.' Follow Esri's instructions [here](http://desktop.arcgis.com/en/arcmap/10.3/map/working-with-layers/using-select-by-attributes.htm)
+
+![.](http://adri2c.maps.arcgis.com/sharing/rest/content/items/f2cc4cf5830b48e3867eb2f06a7a724b/data)
+
+
 
 
 
