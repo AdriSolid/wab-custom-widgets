@@ -6,7 +6,7 @@ Adrián Pérez Beneito Web App builder Custom Widget List
 - [Heat Map](https://github.com/AdriSolid/WAB-Custom-Widgets/blob/master/README.md#heat-map-wab-27-fire-live-demo)
 - [ChartJS](https://github.com/AdriSolid/WAB-Custom-Widgets#chartjs-widget-chart_with_upwards_trend-live-demo)
 - [Buffer](https://github.com/AdriSolid/WAB-Custom-Widgets/blob/master/README.md#buffer-widget-red_circle-live-demo)
-- [Select by Attributes]()
+- [Select by Attributes](https://github.com/AdriSolid/WAB-Custom-Widgets/blob/master/README.md#select-by-attributes-widget-diamond_shape_with_a_dot_inside-live-demo)
 
 
 ## Bar Chart Cedar :bar_chart: [live demo](https://adrisolid.github.io/CedarWidget/)
