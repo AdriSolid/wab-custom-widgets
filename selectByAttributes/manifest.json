@@ -6,8 +6,5 @@
   "author": "Adrián Pérez Beneito",
   "description": "Select by attributes the WebMap layers",
   "copyright": "",
-  "license": "",
-  "properties": {
-    "hasConfig": false
-  }
+  "license": ""
 }
