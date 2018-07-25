@@ -36,7 +36,7 @@ When new users visit your website or product you should demonstrate your product
 **Add [intro.js dependencies](https://github.com/usablica/intro.js/#introjs-v290)** [How to add other libraries to WAB?](https://developers.arcgis.com/web-appbuilder/sample-code/add-a-third-party-library.htm)
 
 **Create the configuration js file and refer to it in the application in the file 'index.html'**
-Explore and get with the console the ids of the containers to which you want to add as a step. If the container doesn't have the 'id' property, get it with 'settingid' -element: getNode('[settingid="widgets_LayerList_Widget_19"]'), position: 'left'- (e.g. the header widgets). Fill the 'intro' and 'position' options:
+Explore and get with the console the ids of the containers to which you want to add as a step. Whether the container doesn't have the 'id' property, get it with 'settingid' -element: getNode('[settingid="widgets_LayerList_Widget_19"]'), position: 'left'- (e.g. the header widgets). Fill the 'intro' and 'position' options:
 
 ```
 function getNode(node){
