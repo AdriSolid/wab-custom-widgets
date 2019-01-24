@@ -71,7 +71,7 @@ Simply add a button that calls the function. For example, go to the 'HeaderContr
 
 - Add a new function for contain the button and call it at 'startup' (Widget.js):
 
-```
+```javascript
 startup: function() {
   this.inherited(arguments);
   this.resize();
@@ -84,7 +84,7 @@ IntroJS: function(){
       label: "INTRO JS",
       style: "position:absolute;top:5px;left:400px;",
       onClick: () => {
-        initIntro()
+        initIntro();
       }
   }, this.executeIntroJS).startup();
 },
