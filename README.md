@@ -38,13 +38,10 @@ When new users visit your website or product you should demonstrate your product
 **Create the configuration js file and refer to it in the application in the file 'index.html'**
 Explore and get with the console the ids of the containers to which you want to add as a step. Whether the container doesn't have the 'id' property, get it with 'settingid' -element: getNode('[settingid="widgets_LayerList_Widget_19"]'), position: 'left'- (e.g. the header widgets). Fill the 'intro' and 'position' options:
 
-```
-function getNode(node){
-    //Getting ids or classes cleanly
-    return document.querySelector(node);
-}
+```javascript
+const getNode = node => document.querySelector(node);
 
-function initIntro(){
+const initIntro = () => {
     introJs().setOptions({
         steps: [{
                 intro: "Hello Web App Builder, I'm IntroJS, wanna join me? :)"
@@ -172,16 +169,3 @@ This WAB widget copies part of the functionality of the famous 'Select by Attrib
 'Select By Attributes allows you to provide a SQL query expression that is used to select features that match the selection criteria.' Follow Esri's instructions [here](http://desktop.arcgis.com/en/arcmap/10.3/map/working-with-layers/using-select-by-attributes.htm)
 
 ![.](http://adri2c.maps.arcgis.com/sharing/rest/content/items/f2cc4cf5830b48e3867eb2f06a7a724b/data)
-
-
-
-
-
-
-
-                    
-                    
-                    
-                    
-
-
