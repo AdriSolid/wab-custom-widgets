@@ -373,7 +373,7 @@ function(declare, BaseWidget, on, lang, Select, Button, CheckBox, idWebMapLayers
     },
 
     getDataByExtent: function(){
-        if(this.graphicGeometry){
+        if (this.graphicGeometry) {
           var query = new Query()
               query.where = "1=1"
               query.returnGeometry = true
@@ -388,14 +388,20 @@ function(declare, BaseWidget, on, lang, Select, Button, CheckBox, idWebMapLayers
                 })
                 this.displayHeatMapLayer(graphics)
               }))
-        }else{
-          var graphics = this.layer.graphics.map(function(graphic){
-            return new Graphic({
-                geometry: graphic.geometry,
-                attributes: graphic.attributes
-            })
-          })
-          this.displayHeatMapLayer(graphics)
+        } else {
+          var query = new Query()
+              query.where = "1=1"
+              query.returnGeometry = true
+              query.outFields = ["*"]
+              new QueryTask(this.url).execute(query, lang.hitch(this, function(results){
+                var graphics = results.features.map(function(graphic){
+                    return new Graphic({
+                        geometry: graphic.geometry,
+                        attributes: graphic.attributes
+                    })
+                })
+                this.displayHeatMapLayer(graphics)
+              }))
         }
     },
 
