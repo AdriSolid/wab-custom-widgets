@@ -11,8 +11,8 @@ I really enjoy everything related to synthesizers and drum machines. I like dark
 
 **You can also support me in:**
 
-- [Instagram](https://www.instagram.com/021.ecnart/)
-- [Soundcloud](https://soundcloud.com/021ecnart)
+- [Instagram](https://www.instagram.com/nebulacircuit)
+- [Soundcloud](https://soundcloud.com/nebulacircuit)
 
 ***
 
